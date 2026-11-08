@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Umarbek — interactive RPG character profile">
+  <title>Umarbek · Character Sheet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Animated particle background -->
+  <canvas id="particles"></canvas>
+
+  <!-- Ambient glow layers -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Language switcher -->
+  <div class="lang-switcher" role="group" aria-label="Language">
+    <button class="lang-btn active" data-lang="ru">RU</button>
+    <button class="lang-btn" data-lang="uz">UZ</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+
+  <!-- ================= MAIN CHARACTER SHEET ================= -->
+  <main class="sheet-wrapper">
+    <div class="sheet">
+
+      <!-- Corner decorations -->
+      <span class="corner corner-tl"></span>
+      <span class="corner corner-tr"></span>
+      <span class="corner corner-bl"></span>
+      <span class="corner corner-br"></span>
+
+      <!-- ========== HEADER ========== -->
+      <header class="sheet-header">
+        <div class="avatar-area">
+          <div class="avatar-ring">
+            <div class="avatar" id="avatar">U</div>
+          </div>
+          <div class="level-badge">
+            <span class="lvl-label">LVL</span>
+            <span class="lvl-num">MAX</span>
+          </div>
+        </div>
+
+        <div class="identity">
+          <div class="name-row">
+            <h1 class="char-name" id="charName">Умарбек</h1>
+            <span class="verified" title="Verified">✓</span>
+          </div>
+          <p class="class-title" id="classTitle">Мультипотенциал · Воин Духа</p>
+          <p class="motto" id="motto">«Дисциплина выше мотивации»</p>
+
+          <div class="xp-bar">
+            <div class="xp-fill"></div>
+            <span class="xp-text">9999 / 9999 XP · MAX</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ========== TABS ========== -->
+      <nav class="tabs" id="tabs">
+        <button class="tab active" data-tab="stats" id="tabStats"></button>
+        <button class="tab" data-tab="skills" id="tabSkills"></button>
+        <button class="tab" data-tab="inventory" id="tabInventory"></button>
+        <button class="tab" data-tab="quests" id="tabQuests"></button>
+        <button class="tab" data-tab="contact" id="tabContact"></button>
+      </nav>
+
+      <!-- ========== PANELS ========== -->
+      <section class="panels">
+        <div class="panel active" id="panel-stats"></div>
+        <div class="panel" id="panel-skills"></div>
+        <div class="panel" id="panel-inventory"></div>
+        <div class="panel" id="panel-quests"></div>
+        <div class="panel" id="panel-contact"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= SECRET ROOM TRIGGER ================= -->
+  <button class="secret-trigger" id="secretTrigger" aria-label="Secret Room">
+    <span class="lock-icon">🔒</span>
+    <span class="secret-label" id="secretLabel">Секретная комната</span>
+  </button>
+
+  <!-- ================= SECRET ROOM MODAL ================= -->
+  <div class="modal-overlay" id="secretModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="secretTitle">
+
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+
+      <div class="modal-inner" id="modalInner">
+        <div class="glitch-title" id="secretTitle" data-text="SECRET ROOM">SECRET ROOM</div>
+
+        <p class="secret-prompt" id="secretPrompt"></p>
+
+        <div class="input-group">
+          <input
+            type="text"
+            id="birthDate"
+            class="date-input"
+            autocomplete="off"
+            spellcheck="false"
+            maxlength="14"
+          >
+          <button class="submit-btn" id="submitDate"></button>
+        </div>
+
+        <p class="secret-hint" id="secretHint"></p>
+        <p class="secret-result" id="secretResult"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="javascript.js"></script>
+</body>
+</html>
